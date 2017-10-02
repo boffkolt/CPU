@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="ppp" Version="10.0.0" InternalType="GUI">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
+    </Plugin>
+  </Plugins>
+  <Description/>
+  <Dependencies/>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="Cross GCC ( nios2-elf )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g;-O0;-Wall" C_Options="-Wfatal-errors;-g;-O0;-Wall;-MD;-pipe;-mhw-mul;-mhw-mulx;-mno-hw-div;" Assembler="-MD;-c;-MMD;-Wall;-gdwarf -g2" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="./"/>
+        <IncludePath Value="./drivers/src"/>
+        <IncludePath Value="./drivers/inc"/>
+        <IncludePath Value="./HAL/inc/"/>
+        <IncludePath Value="./HAL/inc/os"/>
+        <IncludePath Value="./HAL/inc/priv"/>
+        <IncludePath Value="./HAL/inc/sys"/>
+        <IncludePath Value="./HAL/src"/>
+        <Preprocessor Value="SYSTEM_BUS_WIDTH=32"/>
+        <Preprocessor Value="_hal_"/>
+        <Preprocessor Value="ALT_DEBUG"/>
+        <Preprocessor Value="ALT_NO_INSTRUCTION_EMULATION"/>
+        <Preprocessor Value="ALT_PROVIDE_GMON"/>
+        <Preprocessor Value="ALT_SINGLE_THREADED"/>
+        <Preprocessor Value="ALT_USE_SMALL_DRIVERS"/>
+        <Preprocessor Value="ALT_SEMIHOSTING"/>
+      </Compiler>
+      <Linker Options="-T ./linker.x; -DALT_DEBUG; -O0; -g; -Wall; -mhw-mul; -mhw-mulx; -mno-hw-div; -lm;-msmallc" Required="yes">
+        <LibraryPath Value="$(IntermediateDirectory)"/>
+      </Linker>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="./$(ProjectName).elf" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="yes" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="yes" RemoteHostName="localhost" RemoteHostPort="3333" DebuggerPath="../../../intelFPGA/16.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/nios2-elf-gdb" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands>load
+</PostConnectCommands>
+        <StartupCommands>file ./$(ProjectName).elf</StartupCommands>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild>
+        <Command Enabled="yes"/>
+      </PostBuild>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="Cross GCC ( nios2-elf )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-O2;-Wall" C_Options="-O2;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="./"/>
+        <IncludePath Value="./src"/>
+        <IncludePath Value="./inc"/>
+        <IncludePath Value="./sys"/>
+        <Preprocessor Value="NDEBUG"/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Release" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+  <VirtualDirectory Name="src">
+    <File Name="altera_avalon_jtag_uart_fd.c"/>
+    <File Name="altera_avalon_jtag_uart_read.c"/>
+    <File Name="altera_avalon_jtag_uart_init.c"/>
+    <File Name="altera_avalon_jtag_uart_write.c"/>
+    <File Name="altera_avalon_sysid_qsys.c"/>
+    <File Name="ifi_avalon_can_advanced.c"/>
+    <File Name="altera_avalon_jtag_uart_ioctl.c"/>
+    <File Name="alt_instruction_exception_entry.c"/>
+    <File Name="alt_lseek.c"/>
+    <File Name="alt_log_printf.c"/>
+    <File Name="alt_times.c"/>
+    <File Name="alt_close.c"/>
+    <File Name="alt_iic.c"/>
+    <File Name="alt_exit.c"/>
+    <File Name="alt_release_fd.c"/>
+    <File Name="altera_nios2_gen2_irq.c"/>
+    <File Name="alt_sbrk.c"/>
+    <File Name="alt_fcntl.c"/>
+    <File Name="alt_stat.c"/>
+    <File Name="alt_putchar.c"/>
+    <File Name="alt_putcharbuf.c"/>
+    <File Name="alt_uncached_malloc.c"/>
+    <File Name="alt_dev.c"/>
+    <File Name="alt_fd_unlock.c"/>
+    <File Name="alt_putstr.c"/>
+    <File Name="alt_malloc_lock.c"/>
+    <File Name="alt_dma_rxchan_open.c"/>
+    <File Name="alt_dcache_flush_all.c"/>
+    <File Name="alt_irq_register.c"/>
+    <File Name="alt_read.c"/>
+    <File Name="alt_wait.c"/>
+    <File Name="alt_flash_dev.c"/>
+    <File Name="alt_settod.c"/>
+    <File Name="alt_icache_flush_all.c"/>
+    <File Name="alt_execve.c"/>
+    <File Name="alt_fd_lock.c"/>
+    <File Name="alt_io_redirect.c"/>
+    <File Name="alt_get_fd.c"/>
+    <File Name="alt_fs_reg.c"/>
+    <File Name="alt_ioctl.c"/>
+    <File Name="alt_dev_llist_insert.c"/>
+    <File Name="alt_busy_sleep.c"/>
+    <File Name="alt_dcache_flush_no_writeback.c"/>
+    <File Name="alt_env_lock.c"/>
+    <File Name="alt_fork.c"/>
+    <File Name="alt_unlink.c"/>
+    <File Name="alt_rename.c"/>
+    <File Name="alt_getchar.c"/>
+    <File Name="alt_open.c"/>
+    <File Name="alt_ecc_fatal_exception.c"/>
+    <File Name="alt_do_dtors.c"/>
+    <File Name="alt_getpid.c"/>
+    <File Name="alt_usleep.c"/>
+    <File Name="alt_iic_isr_register.c"/>
+    <File Name="alt_irq_handler.c"/>
+    <File Name="alt_environ.c"/>
+    <File Name="alt_main.c"/>
+    <File Name="alt_find_file.c"/>
+    <File Name="alt_load.c"/>
+    <File Name="alt_uncached_free.c"/>
+    <File Name="alt_kill.c"/>
+    <File Name="alt_alarm_start.c"/>
+    <File Name="alt_write.c"/>
+    <File Name="alt_dma_txchan_open.c"/>
+    <File Name="alt_fstat.c"/>
+    <File Name="alt_find_dev.c"/>
+    <File Name="alt_printf.c"/>
+    <File Name="alt_instruction_exception_register.c"/>
+    <File Name="alt_link.c"/>
+    <File Name="alt_gettod.c"/>
+    <File Name="alt_gmon.c"/>
+    <File Name="alt_dcache_flush.c"/>
+    <File Name="alt_do_ctors.c"/>
+    <File Name="alt_icache_flush.c"/>
+    <File Name="alt_errno.c"/>
+    <File Name="alt_isatty.c"/>
+    <File Name="alt_tick.c"/>
+    <File Name="alt_irq_vars.c"/>
+    <File Name="main.c"/>
+    <File Name="alt_sys_init.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="include">
+    <File Name="ifi_avalon_can_advanced.h"/>
+    <File Name="altera_avalon_sysid_qsys_regs.h"/>
+    <File Name="altera_avalon_jtag_uart_fd.h"/>
+    <File Name="altera_avalon_sysid_qsys.h"/>
+    <File Name="altera_avalon_pio_regs.h"/>
+    <File Name="altera_avalon_jtag_uart_regs.h"/>
+    <File Name="altera_avalon_jtag_uart.h"/>
+    <File Name="ifi_avalon_can_advanced_regs.h"/>
+    <File Name="alt_syscall.h"/>
+    <File Name="alt_flag.h"/>
+    <File Name="alt_sem.h"/>
+    <File Name="alt_hooks.h"/>
+    <File Name="alt_exception_handler_registry.h"/>
+    <File Name="alt_irq_table.h"/>
+    <File Name="alt_alarm.h"/>
+    <File Name="alt_iic_isr_register.h"/>
+    <File Name="alt_no_error.h"/>
+    <File Name="alt_legacy_irq.h"/>
+    <File Name="alt_dev_llist.h"/>
+    <File Name="alt_busy_sleep.h"/>
+    <File Name="nios2_gmon_data.h"/>
+    <File Name="alt_file.h"/>
+    <File Name="alt_dma_dev.h"/>
+    <File Name="alt_timestamp.h"/>
+    <File Name="alt_llist.h"/>
+    <File Name="alt_alarm.h"/>
+    <File Name="alt_errno.h"/>
+    <File Name="ioctl.h"/>
+    <File Name="alt_irq_entry.h"/>
+    <File Name="alt_dma.h"/>
+    <File Name="alt_log_printf.h"/>
+    <File Name="alt_warning.h"/>
+    <File Name="alt_irq.h"/>
+    <File Name="termios.h"/>
+    <File Name="alt_stack.h"/>
+    <File Name="alt_license_reminder_ucosii.h"/>
+    <File Name="alt_sys_wrappers.h"/>
+    <File Name="alt_debug.h"/>
+    <File Name="alt_cache.h"/>
+    <File Name="alt_dev.h"/>
+    <File Name="alt_flash.h"/>
+    <File Name="alt_set_args.h"/>
+    <File Name="alt_flash_dev.h"/>
+    <File Name="alt_sim.h"/>
+    <File Name="alt_sys_init.h"/>
+    <File Name="alt_driver.h"/>
+    <File Name="alt_exceptions.h"/>
+    <File Name="alt_stdio.h"/>
+    <File Name="alt_load.h"/>
+    <File Name="alt_flash_types.h"/>
+    <File Name="alt_types.h"/>
+    <File Name="nios2.h"/>
+    <File Name="io.h"/>
+    <File Name="altera_nios2_gen2_irq.h"/>
+    <File Name="system.h"/>
+    <File Name="linker.h"/>
+  </VirtualDirectory>
+</CodeLite_Project>
