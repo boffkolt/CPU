@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="nios_first" Version="10.0.0" InternalType="User templates">
+  <VirtualDirectory Name="hal_bsp">
+    <VirtualDirectory Name="HAL">
+      <VirtualDirectory Name="inc">
+        <VirtualDirectory Name="sys">
+          <File Name="hal_bsp/HAL/inc/sys/alt_flash.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_sys_wrappers.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_stack.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_dma.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_irq.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/termios.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_log_printf.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_warning.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_license_reminder_ucosii.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_load.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_timestamp.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_debug.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_dma_dev.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_cache.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_driver.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_sys_init.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_stdio.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_errno.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_sim.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_flash_dev.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/ioctl.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_set_args.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_exceptions.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_irq_entry.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_dev.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_llist.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_flash_types.h"/>
+          <File Name="hal_bsp/HAL/inc/sys/alt_alarm.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="priv">
+          <File Name="hal_bsp/HAL/inc/priv/alt_no_error.h"/>
+          <File Name="hal_bsp/HAL/inc/priv/alt_legacy_irq.h"/>
+          <File Name="hal_bsp/HAL/inc/priv/alt_exception_handler_registry.h"/>
+          <File Name="hal_bsp/HAL/inc/priv/alt_file.h"/>
+          <File Name="hal_bsp/HAL/inc/priv/nios2_gmon_data.h"/>
+          <File Name="hal_bsp/HAL/inc/priv/alt_dev_llist.h"/>
+          <File Name="hal_bsp/HAL/inc/priv/alt_busy_sleep.h"/>
+          <File Name="hal_bsp/HAL/inc/priv/alt_irq_table.h"/>
+          <File Name="hal_bsp/HAL/inc/priv/alt_iic_isr_register.h"/>
+          <File Name="hal_bsp/HAL/inc/priv/alt_alarm.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="os">
+          <File Name="hal_bsp/HAL/inc/os/alt_sem.h"/>
+          <File Name="hal_bsp/HAL/inc/os/alt_hooks.h"/>
+          <File Name="hal_bsp/HAL/inc/os/alt_syscall.h"/>
+          <File Name="hal_bsp/HAL/inc/os/alt_flag.h"/>
+        </VirtualDirectory>
+        <File Name="hal_bsp/HAL/inc/alt_types.h"/>
+        <File Name="hal_bsp/HAL/inc/nios2.h"/>
+        <File Name="hal_bsp/HAL/inc/io.h"/>
+        <File Name="hal_bsp/HAL/inc/altera_nios2_gen2_irq.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="src">
+        <File Name="hal_bsp/HAL/src/alt_iic_isr_register.c"/>
+        <File Name="hal_bsp/HAL/src/alt_close.c"/>
+        <File Name="hal_bsp/HAL/src/alt_isatty.c"/>
+        <File Name="hal_bsp/HAL/src/alt_rename.c"/>
+        <File Name="hal_bsp/HAL/src/alt_icache_flush_all.c"/>
+        <File Name="hal_bsp/HAL/src/alt_read.c"/>
+        <File Name="hal_bsp/HAL/src/alt_dev.c"/>
+        <File Name="hal_bsp/HAL/src/alt_release_fd.c"/>
+        <File Name="hal_bsp/HAL/src/alt_do_dtors.c"/>
+        <File Name="hal_bsp/HAL/src/alt_unlink.c"/>
+        <File Name="hal_bsp/HAL/src/alt_tick.c"/>
+        <File Name="hal_bsp/HAL/src/alt_dev_llist_insert.c"/>
+        <File Name="hal_bsp/HAL/src/alt_do_ctors.c"/>
+        <File Name="hal_bsp/HAL/src/alt_get_fd.c"/>
+        <File Name="hal_bsp/HAL/src/alt_find_file.c"/>
+        <File Name="hal_bsp/HAL/src/alt_execve.c"/>
+        <File Name="hal_bsp/HAL/src/alt_settod.c"/>
+        <File Name="hal_bsp/HAL/src/alt_dcache_flush_no_writeback.c"/>
+        <File Name="hal_bsp/HAL/src/alt_fs_reg.c"/>
+        <File Name="hal_bsp/HAL/src/alt_dma_txchan_open.c"/>
+        <File Name="hal_bsp/HAL/src/alt_fork.c"/>
+        <File Name="hal_bsp/HAL/src/alt_io_redirect.c"/>
+        <File Name="hal_bsp/HAL/src/alt_env_lock.c"/>
+        <File Name="hal_bsp/HAL/src/alt_flash_dev.c"/>
+        <File Name="hal_bsp/HAL/src/alt_errno.c"/>
+        <File Name="hal_bsp/HAL/src/alt_printf.c"/>
+        <File Name="hal_bsp/HAL/src/alt_ioctl.c"/>
+        <File Name="hal_bsp/HAL/src/alt_dcache_flush_all.c"/>
+        <File Name="hal_bsp/HAL/src/alt_gmon.c"/>
+        <File Name="hal_bsp/HAL/src/alt_uncached_malloc.c"/>
+        <File Name="hal_bsp/HAL/src/alt_fd_unlock.c"/>
+        <File Name="hal_bsp/HAL/src/alt_main.c"/>
+        <File Name="hal_bsp/HAL/src/alt_remap_cached.c"/>
+        <File Name="hal_bsp/HAL/src/alt_malloc_lock.c"/>
+        <File Name="hal_bsp/HAL/src/alt_lseek.c"/>
+        <File Name="hal_bsp/HAL/src/alt_iic.c"/>
+        <File Name="hal_bsp/HAL/src/alt_dma_rxchan_open.c"/>
+        <File Name="hal_bsp/HAL/src/alt_write.c"/>
+        <File Name="hal_bsp/HAL/src/alt_getchar.c"/>
+        <File Name="hal_bsp/HAL/src/alt_putchar.c"/>
+        <File Name="hal_bsp/HAL/src/alt_gettod.c"/>
+        <File Name="hal_bsp/HAL/src/alt_environ.c"/>
+        <File Name="hal_bsp/HAL/src/alt_usleep.c"/>
+        <File Name="hal_bsp/HAL/src/alt_uncached_free.c"/>
+        <File Name="hal_bsp/HAL/src/alt_busy_sleep.c"/>
+        <File Name="hal_bsp/HAL/src/alt_icache_flush.c"/>
+        <File Name="hal_bsp/HAL/src/alt_link.c"/>
+        <File Name="hal_bsp/HAL/src/alt_kill.c"/>
+        <File Name="hal_bsp/HAL/src/alt_dcache_flush.c"/>
+        <File Name="hal_bsp/HAL/src/alt_putcharbuf.c"/>
+        <File Name="hal_bsp/HAL/src/alt_irq_vars.c"/>
+        <File Name="hal_bsp/HAL/src/altera_nios2_gen2_irq.c"/>
+        <File Name="hal_bsp/HAL/src/alt_irq_register.c"/>
+        <File Name="hal_bsp/HAL/src/alt_fstat.c"/>
+        <File Name="hal_bsp/HAL/src/alt_exit.c"/>
+        <File Name="hal_bsp/HAL/src/alt_irq_handler.c"/>
+        <File Name="hal_bsp/HAL/src/alt_fcntl.c"/>
+        <File Name="hal_bsp/HAL/src/alt_sbrk.c"/>
+        <File Name="hal_bsp/HAL/src/alt_find_dev.c"/>
+        <File Name="hal_bsp/HAL/src/alt_getpid.c"/>
+        <File Name="hal_bsp/HAL/src/alt_fd_lock.c"/>
+        <File Name="hal_bsp/HAL/src/alt_stat.c"/>
+        <File Name="hal_bsp/HAL/src/alt_open.c"/>
+        <File Name="hal_bsp/HAL/src/alt_alarm_start.c"/>
+        <File Name="hal_bsp/HAL/src/alt_times.c"/>
+        <File Name="hal_bsp/HAL/src/alt_load.c"/>
+        <File Name="hal_bsp/HAL/src/alt_instruction_exception_entry.c"/>
+        <File Name="hal_bsp/HAL/src/alt_log_printf.c"/>
+        <File Name="hal_bsp/HAL/src/alt_instruction_exception_register.c"/>
+        <File Name="hal_bsp/HAL/src/alt_ecc_fatal_exception.c"/>
+        <File Name="hal_bsp/HAL/src/alt_wait.c"/>
+        <File Name="hal_bsp/HAL/src/alt_putstr.c"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="drivers">
+      <VirtualDirectory Name="src">
+        <File Name="hal_bsp/drivers/src/altera_avalon_jtag_uart_init.c"/>
+        <File Name="hal_bsp/drivers/src/altera_avalon_jtag_uart_read.c"/>
+        <File Name="hal_bsp/drivers/src/altera_avalon_jtag_uart_ioctl.c"/>
+        <File Name="hal_bsp/drivers/src/altera_avalon_jtag_uart_write.c"/>
+        <File Name="hal_bsp/drivers/src/altera_avalon_sysid_qsys.c"/>
+        <File Name="hal_bsp/drivers/src/altera_avalon_jtag_uart_fd.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="inc">
+        <File Name="hal_bsp/drivers/inc/altera_avalon_jtag_uart.h"/>
+        <File Name="hal_bsp/drivers/inc/altera_avalon_pio_regs.h"/>
+        <File Name="hal_bsp/drivers/inc/altera_avalon_jtag_uart_fd.h"/>
+        <File Name="hal_bsp/drivers/inc/altera_avalon_jtag_uart_regs.h"/>
+        <File Name="hal_bsp/drivers/inc/altera_avalon_sysid_qsys.h"/>
+        <File Name="hal_bsp/drivers/inc/altera_avalon_sysid_qsys_regs.h"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <File Name="hal_bsp/linker.h"/>
+    <File Name="hal_bsp/alt_sys_init.c"/>
+    <File Name="hal_bsp/system.h"/>
+  </VirtualDirectory>
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
+    </Plugin>
+  </Plugins>
+  <Description/>
+  <Dependencies/>
+  <VirtualDirectory Name="src">
+    <File Name="src/main.c"/>
+  </VirtualDirectory>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="Cross GCC ( nios2-elf )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g;-O0;-Wall" C_Options="-Wfatal-errors;-g;-O0;-Wall;-MD;-pipe;-mhw-mul;-mhw-mulx;-mno-hw-div;" Assembler="-MD;-c;-MMD;-Wall;-gdwarf -g2" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="./hal_bsp"/>
+        <IncludePath Value="./hal_bsp/drivers/src"/>
+        <IncludePath Value="./hal_bsp/drivers/inc"/>
+        <IncludePath Value="./hal_bsp/HAL/inc/"/>
+        <IncludePath Value="./hal_bsp/HAL/inc/os"/>
+        <IncludePath Value="./hal_bsp/HAL/inc/priv"/>
+        <IncludePath Value="./hal_bsp/HAL/inc/sys"/>
+        <IncludePath Value="./hal_bsp/HAL/src"/>
+        <IncludePath Value="./src"/>
+        <IncludePath Value="./inc"/>
+        <Preprocessor Value="SYSTEM_BUS_WIDTH=32"/>
+        <Preprocessor Value="_hal_"/>
+        <Preprocessor Value="ALT_DEBUG"/>
+        <Preprocessor Value="ALT_NO_INSTRUCTION_EMULATION"/>
+        <Preprocessor Value="ALT_PROVIDE_GMON"/>
+        <Preprocessor Value="ALT_SINGLE_THREADED"/>
+        <Preprocessor Value="ALT_USE_SMALL_DRIVERS"/>
+        <Preprocessor Value="ALT_SEMIHOSTING"/>
+      </Compiler>
+      <Linker Options="-T ./hal_bsp/linker.x; -DALT_DEBUG; -O0; -g; -Wall; -mhw-mul; -mhw-mulx; -mno-hw-div; -lm;-msmallc" Required="yes">
+        <LibraryPath Value="$(IntermediateDirectory)"/>
+      </Linker>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName).elf" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="yes" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="yes" RemoteHostName="localhost" RemoteHostPort="3333" DebuggerPath="../../../intelFPGA/16.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/nios2-elf-gdb" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands>load
+</PostConnectCommands>
+        <StartupCommands>file $(IntermediateDirectory)/$(ProjectName).elf</StartupCommands>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild>
+        <Command Enabled="yes"/>
+      </PostBuild>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="Cross GCC ( nios2-elf )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-O2;-Wall" C_Options="-Wfatal-errors;-g;-O2;-Wall;-MD;-pipe;-mhw-mul;-mhw-mulx;-mno-hw-div" Assembler="-MD;-c;-MMD;-Wall;-gdwarf -g2" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="./"/>
+        <IncludePath Value="./drivers/src"/>
+        <IncludePath Value="./drivers/inc"/>
+        <IncludePath Value="./HAL/inc/"/>
+        <IncludePath Value="./HAL/inc/os"/>
+        <IncludePath Value="./HAL/inc/priv"/>
+        <IncludePath Value="./HAL/inc/sys"/>
+        <IncludePath Value="./HAL/src"/>
+        <Preprocessor Value="SYSTEM_BUS_WIDTH=32"/>
+        <Preprocessor Value="_hal_"/>
+        <Preprocessor Value="ALT_RELEASE"/>
+        <Preprocessor Value="ALT_NO_INSTRUCTION_EMULATION"/>
+        <Preprocessor Value="ALT_PROVIDE_GMON"/>
+        <Preprocessor Value="ALT_SINGLE_THREADED"/>
+        <Preprocessor Value="ALT_USE_SMALL_DRIVERS"/>
+        <Preprocessor Value="ALT_SEMIHOSTING"/>
+      </Compiler>
+      <Linker Options="-T ./linker.x;-DALT_RELEASE;-O2;-g;-Wall;-mhw-mul;-mhw-mulx;-mno-hw-div;-lm;-msmallc" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName).elf" IntermediateDirectory="./Release" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="yes" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="yes" RemoteHostName="localhost" RemoteHostPort="3333" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands>load</PostConnectCommands>
+        <StartupCommands>file $(IntermediateDirectory)/$(ProjectName).elf</StartupCommands>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>
