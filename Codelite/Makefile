@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ 12 - Debug ]----------"
-	@cd "12" && "$(MAKE)" -f  "12.mk" && "$(MAKE)" -f  "12.mk" PostBuild
+	@echo "----------Building project:[ nios_hello - Debug ]----------"
+	@cd "ppp" && "$(MAKE)" -f  "nios_hello.mk" && "$(MAKE)" -f  "nios_hello.mk" PostBuild
 clean:
-	@echo "----------Cleaning project:[ 12 - Debug ]----------"
-	@cd "12" && "$(MAKE)" -f  "12.mk" clean
+	@echo "----------Cleaning project:[ nios_hello - Debug ]----------"
+	@cd "ppp" && "$(MAKE)" -f  "nios_hello.mk" clean
