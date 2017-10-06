@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="nios_first" Version="10.0.0" InternalType="User templates">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
+    </Plugin>
+  </Plugins>
   <VirtualDirectory Name="hal_bsp">
     <VirtualDirectory Name="HAL">
       <VirtualDirectory Name="inc">
@@ -153,11 +158,6 @@
     <File Name="hal_bsp/alt_sys_init.c"/>
     <File Name="hal_bsp/system.h"/>
   </VirtualDirectory>
-  <Plugins>
-    <Plugin Name="qmake">
-      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
-    </Plugin>
-  </Plugins>
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
@@ -195,10 +195,10 @@
         <Preprocessor Value="ALT_SEMIHOSTING"/>
       </Compiler>
       <Linker Options="-T ./hal_bsp/linker.x; -DALT_DEBUG; -O0; -g; -Wall; -mhw-mul; -mhw-mulx; -mno-hw-div; -lm;-msmallc" Required="yes">
-        <LibraryPath Value="$(IntermediateDirectory)"/>
+        <LibraryPath Value="./hal_bsp"/>
       </Linker>
       <ResourceCompiler Options="" Required="no"/>
-      <General OutputFile="$(IntermediateDirectory)/$(ProjectName).elf" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="yes" IsEnabled="yes"/>
+      <General OutputFile="./$(ProjectName).elf" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="yes" IsEnabled="yes"/>
       <BuildSystem Name="Default"/>
       <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
         <![CDATA[]]>
@@ -207,7 +207,7 @@
         <DebuggerSearchPaths/>
         <PostConnectCommands>load
 </PostConnectCommands>
-        <StartupCommands>file $(IntermediateDirectory)/$(ProjectName).elf</StartupCommands>
+        <StartupCommands>file ./$(ProjectName).elf</StartupCommands>
       </Debugger>
       <PreBuild/>
       <PostBuild>
@@ -236,14 +236,16 @@
     </Configuration>
     <Configuration Name="Release" CompilerType="Cross GCC ( nios2-elf )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
       <Compiler Options="-O2;-Wall" C_Options="-Wfatal-errors;-g;-O2;-Wall;-MD;-pipe;-mhw-mul;-mhw-mulx;-mno-hw-div" Assembler="-MD;-c;-MMD;-Wall;-gdwarf -g2" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
-        <IncludePath Value="./"/>
-        <IncludePath Value="./drivers/src"/>
-        <IncludePath Value="./drivers/inc"/>
-        <IncludePath Value="./HAL/inc/"/>
-        <IncludePath Value="./HAL/inc/os"/>
-        <IncludePath Value="./HAL/inc/priv"/>
-        <IncludePath Value="./HAL/inc/sys"/>
-        <IncludePath Value="./HAL/src"/>
+        <IncludePath Value="./hal_bsp"/>
+        <IncludePath Value="./hal_bsp/drivers/src"/>
+        <IncludePath Value="./hal_bsp/drivers/inc"/>
+        <IncludePath Value="./hal_bsp/HAL/inc/"/>
+        <IncludePath Value="./hal_bsp/HAL/inc/os"/>
+        <IncludePath Value="./hal_bsp/HAL/inc/priv"/>
+        <IncludePath Value="./hal_bsp/HAL/inc/sys"/>
+        <IncludePath Value="./hal_bsp/HAL/src"/>
+        <IncludePath Value="./src"/>
+        <IncludePath Value="./inc"/>
         <Preprocessor Value="SYSTEM_BUS_WIDTH=32"/>
         <Preprocessor Value="_hal_"/>
         <Preprocessor Value="ALT_RELEASE"/>
@@ -253,7 +255,7 @@
         <Preprocessor Value="ALT_USE_SMALL_DRIVERS"/>
         <Preprocessor Value="ALT_SEMIHOSTING"/>
       </Compiler>
-      <Linker Options="-T ./linker.x;-DALT_RELEASE;-O2;-g;-Wall;-mhw-mul;-mhw-mulx;-mno-hw-div;-lm;-msmallc" Required="yes"/>
+      <Linker Options="-T ./hal_bsp/linker.x;-DALT_RELEASE;-O2;-g;-Wall;-mhw-mul;-mhw-mulx;-mno-hw-div;-lm;-msmallc" Required="yes"/>
       <ResourceCompiler Options="" Required="no"/>
       <General OutputFile="$(IntermediateDirectory)/$(ProjectName).elf" IntermediateDirectory="./Release" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="yes" IsEnabled="yes"/>
       <BuildSystem Name="Default"/>
@@ -266,7 +268,10 @@
         <StartupCommands>file $(IntermediateDirectory)/$(ProjectName).elf</StartupCommands>
       </Debugger>
       <PreBuild/>
-      <PostBuild/>
+      <PostBuild>
+        <Command Enabled="yes"/>
+        <Command Enabled="yes">echo "building ok"</Command>
+      </PostBuild>
       <CustomBuild Enabled="no">
         <RebuildCommand/>
         <CleanCommand/>

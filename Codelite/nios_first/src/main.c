@@ -20,6 +20,7 @@ int leds =0;
 
  
      IOWR_ALTERA_AVALON_PIO_DATA(LEDS_BASE, leds);
+     
      usleep(1000000);    									   // wait for 1 sec
 
 

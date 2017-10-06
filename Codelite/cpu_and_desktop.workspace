@@ -3,18 +3,16 @@
   <Project Name="stm32" Path="stm32/stm32.project" Active="No"/>
   <Project Name="nios_first" Path="nios_first/nios_first.project" Active="Yes"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="yes">
+    <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
       <Project Name="stm32" ConfigName="Debug"/>
       <Project Name="first_gui" ConfigName="Debug"/>
       <Project Name="1" ConfigName="Debug"/>
       <Project Name="nios_first" ConfigName="Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Release" Selected="no">
+    <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
       <Project Name="stm32" ConfigName="Release"/>
-      <Project Name="first_gui" ConfigName="Release"/>
-      <Project Name="1" ConfigName="Release"/>
       <Project Name="nios_first" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>

@@ -2,12 +2,12 @@
 ## Auto Generated makefile by CodeLite IDE
 ## any manual changes will be erased      
 ##
-## Debug
+## Release
 ProjectName            :=nios_first
-ConfigurationName      :=Debug
+ConfigurationName      :=Release
 WorkspacePath          :=/home/engineer/GIT/CPU/Codelite
 ProjectPath            :=/home/engineer/GIT/CPU/Codelite/nios_first
-IntermediateDirectory  :=./Debug
+IntermediateDirectory  :=./Release
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
@@ -28,20 +28,20 @@ LibraryPathSwitch      :=-L
 PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
 OutputFile             :=$(IntermediateDirectory)/$(ProjectName).elf
-Preprocessors          :=$(PreprocessorSwitch)SYSTEM_BUS_WIDTH=32 $(PreprocessorSwitch)_hal_ $(PreprocessorSwitch)ALT_DEBUG $(PreprocessorSwitch)ALT_NO_INSTRUCTION_EMULATION $(PreprocessorSwitch)ALT_PROVIDE_GMON $(PreprocessorSwitch)ALT_SINGLE_THREADED $(PreprocessorSwitch)ALT_USE_SMALL_DRIVERS $(PreprocessorSwitch)ALT_SEMIHOSTING 
+Preprocessors          :=$(PreprocessorSwitch)SYSTEM_BUS_WIDTH=32 $(PreprocessorSwitch)_hal_ $(PreprocessorSwitch)ALT_RELEASE $(PreprocessorSwitch)ALT_NO_INSTRUCTION_EMULATION $(PreprocessorSwitch)ALT_PROVIDE_GMON $(PreprocessorSwitch)ALT_SINGLE_THREADED $(PreprocessorSwitch)ALT_USE_SMALL_DRIVERS $(PreprocessorSwitch)ALT_SEMIHOSTING 
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E
 ObjectsFileList        :="nios_first.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
-LinkOptions            :=  -T ./hal_bsp/linker.x  -DALT_DEBUG  -O0  -g  -Wall  -mhw-mul  -mhw-mulx  -mno-hw-div  -lm -msmallc
+LinkOptions            :=  -T ./hal_bsp/linker.x -DALT_RELEASE -O2 -g -Wall -mhw-mul -mhw-mulx -mno-hw-div -lm -msmallc
 IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch)./hal_bsp $(IncludeSwitch)./hal_bsp/drivers/src $(IncludeSwitch)./hal_bsp/drivers/inc $(IncludeSwitch)./hal_bsp/HAL/inc/ $(IncludeSwitch)./hal_bsp/HAL/inc/os $(IncludeSwitch)./hal_bsp/HAL/inc/priv $(IncludeSwitch)./hal_bsp/HAL/inc/sys $(IncludeSwitch)./hal_bsp/HAL/src $(IncludeSwitch)./src $(IncludeSwitch)./inc 
 IncludePCH             := 
 RcIncludePath          := 
 Libs                   := 
 ArLibs                 :=  
-LibPath                := $(LibraryPathSwitch). $(LibraryPathSwitch)$(IntermediateDirectory) 
+LibPath                := $(LibraryPathSwitch). 
 
 ##
 ## Common variables
@@ -49,11 +49,11 @@ LibPath                := $(LibraryPathSwitch). $(LibraryPathSwitch)$(Intermedia
 ##
 AR       := /home/engineer/intelFPGA/16.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/nios2-elf-ar rcu
 CXX      := /home/engineer/intelFPGA/16.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/nios2-elf-g++
-CC       := /home/engineer/intelFPGA/16.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/nios2-elf-gcc
-CXXFLAGS :=  -g -O0 -Wall $(Preprocessors)
-CFLAGS   :=  -Wfatal-errors -g -O0 -Wall -MD -pipe -mhw-mul -mhw-mulx -mno-hw-div  $(Preprocessors)
+CC       := /home/engineer/intelFPGA/16.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/nios2-elf-gcc -xc
+CXXFLAGS :=  -O2 -Wall $(Preprocessors)
+CFLAGS   :=  -Wfatal-errors -g -O2 -Wall -MD -pipe -mhw-mul -mhw-mulx -mno-hw-div $(Preprocessors)
 ASFLAGS  := -MD -c -MMD -Wall -gdwarf -g2
-AS       := /home/engineer/intelFPGA/16.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/nios2-elf-as
+AS       := /home/engineer/intelFPGA/16.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/nios2-elf-gcc
 
 
 ##
@@ -89,14 +89,15 @@ $(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 PostBuild:
 	@echo Executing Post Build commands ...
 	
+	echo "building ok"
 	@echo Done
 
 MakeIntermediateDirs:
-	@test -d ./Debug || $(MakeDirCommand) ./Debug
+	@test -d ./Release || $(MakeDirCommand) ./Release
 
 
 $(IntermediateDirectory)/.d:
-	@test -d ./Debug || $(MakeDirCommand) ./Debug
+	@test -d ./Release || $(MakeDirCommand) ./Release
 
 PreBuild:
 
@@ -750,6 +751,6 @@ $(IntermediateDirectory)/hal_bsp_drivers_src_altera_avalon_jtag_uart_fd.c$(Prepr
 ## Clean
 ##
 clean:
-	$(RM) -r ./Debug/
+	$(RM) -r ./Release/
 
 
