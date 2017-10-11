@@ -1,12 +1,31 @@
 import qbs
 Project
 {
-    name: "nios2"
-    Product
-    {
+    property string QUARTPATH: "/home/engineer/GIT/FPGA/PROJECTS/"
+    name: "NIOSII"
+   // type: "application"
+
+    
+    
+            Product
+    {   
         name: "CPU"
         type: "application"
-        property string QuartusRootProjPath: "/home/engineer/GIT/FPGA/PROJECTS"
+
+        
+        
+        
+        
+        
+        
+        
+        Group
+        {
+            name: "bsp"
+            files: ["hal_bsp/settings.bsp"]
+            fileTags: ['bsp']
+        }
+
         Group
         {
             name: "src"
@@ -14,15 +33,10 @@ Project
             fileTags: ['c']
         }
 
-        FileTagger {
-            patterns: "*.h"
-            fileTags: "inc"
-        }
-
         Group
         {
              name: "inc"
-             files: ["hal_bsp/**/*.h","inc/*.h"]
+             files: ["hal_bsp/**/*.h","hal_bsp/*.h","inc/*.h"]
              fileTags: ['h']
         }
 
@@ -32,17 +46,42 @@ Project
             files: ["hal_bsp/**/*.S"]
             fileTags: ['S']
          }
+       
 
         Group
         {
-            name: "main"
+            name: "src"
             files: ["main.c"]
             fileTags: ['main.c']
         }
 
+        
+        Rule
+        {
+            inputs: ['bsp']
+            Artifact
+            {fileTags: ['gen']}
+            prepare: 
+            {
+             var args = [];
+                args.push('--settings')
+                args.push(input.filePath);
+                args.push("--bsp-dir "+project.path+"/hal_bsp/");
+             var compilerPath = "nios2-bsp-generate-files"    
+            var cmd = new Command(compilerPath, args);
+                cmd.description = 'generating' + input.fileName;
+                cmd.highlight = 'generate';
+                cmd.silent = false;
+                return cmd;
+            }
+        }
+        
+        
+        
         Rule
         {
             inputs: ['c']
+            auxiliaryInputs: ['gen']
             Artifact
             {
             fileTags: ['obj']
@@ -65,18 +104,19 @@ Project
                     args.push("-mno-hw-mulx")
                     args.push("-mgpopt=global")
                 //Include paths:
-                    args.push("-I" +project.path+ "/hal_bsp/HAL/inc")
-                    args.push("-I" +project.path+ "/hal_bsp/HAL/inc/os")
-                    args.push("-I" +project.path+ "/hal_bsp/HAL/inc/priv")
-                    args.push("-I" +project.path+ "/hal_bsp/HAL/inc/sys")
-                    args.push("-I" +project.path+ "/hal_bsp/drivers/inc")
-                    args.push("-I" +project.path+ "/inc")
+                    args.push("-I" +project.path+"/hal_bsp/HAL/inc")
+                    args.push("-I" +project.path+"/hal_bsp/drivers/inc")
+                    args.push("-I" +project.path+"/hal_bsp/")
                 //Defines:
-                    args.push("-D__hal__")
-                    args.push("-DALT_NO_INSTRUCTION_EMULATION")
-                    args.push("-DALT_USE_SMALL_DRIVERS")
-                    args.push("-DSMALL_C_LIB")
-                    args.push("-DALT_SINGLE_THREADED")
+                args.push("-D__hal__")
+                args.push("-DALT_NO_INSTRUCTION_EMULATION")
+                args.push("-DALT_USE_SMALL_DRIVERS")    //использование уменьшенных драйверов
+                args.push("-DSMALL_C_LIB")              //использование уменьшенных библиотек
+                args.push("-DALT_SINGLE_THREADED")
+            //для уменьшения размера раскомментить
+//                  args.push("-DALT_NO_C_PLUS_PLUS")       //без поддержки С++
+//                  args.push("-DALT_NO_EXIT")              //без функции exit()
+//                  args.push("-DALT_NO_CLEAN_EXIT")       //без функции exit()
                 //Input and Output files: 
                     args.push(input.filePath);
                     args.push('-o');
@@ -93,6 +133,7 @@ Project
         Rule
         {
             inputs: ['S']
+            auxiliaryInputs: ['gen']
             Artifact
             {
                 fileTags: ['obj']
@@ -115,18 +156,19 @@ Project
                 args.push("-pipe")
                 args.push("-Wa,-gdwarf2")
             //Include paths:
-                args.push("-I" +project.path+ "/hal_bsp/HAL/inc")
-                args.push("-I" +project.path+ "/hal_bsp/HAL/inc/os")
-                args.push("-I" +project.path+ "/hal_bsp/HAL/inc/priv")
-                args.push("-I" +project.path+ "/hal_bsp/HAL/inc/sys")
-                args.push("-I" +project.path+ "/hal_bsp/drivers/inc")
-                args.push("-I" +project.path+ "/inc")
+                args.push("-I" +project.path+"/hal_bsp/HAL/inc")
+                args.push("-I" +project.path+"/hal_bsp/drivers/inc")
+                args.push("-I" +project.path+"/hal_bsp/")
             //Defines:    
                 args.push("-D__hal__")
                 args.push("-DALT_NO_INSTRUCTION_EMULATION")
-                args.push("-DALT_USE_SMALL_DRIVERS")
-                args.push("-DSMALL_C_LIB")
+                args.push("-DALT_USE_SMALL_DRIVERS")    //использование уменьшенных драйверов
+                args.push("-DSMALL_C_LIB")              //использование уменьшенных библиотек
                 args.push("-DALT_SINGLE_THREADED")
+            //для уменьшения размера раскомментить
+//                  args.push("-DALT_NO_C_PLUS_PLUS")       //без поддержки С++
+//                  args.push("-DALT_NO_EXIT")              //без функции exit()
+//                  args.push("-DALT_NO_CLEAN_EXIT")       //без функции exit()
             //Input and Output files:    
                 args.push(input.filePath);
                 args.push('-o');
@@ -160,13 +202,14 @@ Project
                         args.push(inputs["obj"][i].filePath);
                 var compilerPath = "nios2-elf-ar"
                 var cmd = new Command(compilerPath,args);
-                cmd.description = "create library: "+project.name+".a"
+                cmd.description = "create elflibrary: "+project.name+".a"
                 return cmd;
             }
          }
          Rule
          {
             inputs: ['main.c']
+            auxiliaryInputs: ['a']
             Artifact
             {
                 fileTags: ['main_obj']
@@ -189,18 +232,20 @@ Project
                     args.push("-mno-hw-mulx")
                     args.push("-mgpopt=global")
                 //Include paths:
-                    args.push("-I" +project.path+ "/hal_bsp/HAL/inc")
-                    args.push("-I" +project.path+ "/hal_bsp/HAL/inc/os")
-                    args.push("-I" +project.path+ "/hal_bsp/HAL/inc/priv")
-                    args.push("-I" +project.path+ "/hal_bsp/HAL/inc/sys")
-                    args.push("-I" +project.path+ "/hal_bsp/drivers/inc")
-                    args.push("-I" +project.path+ "/inc")
+                args.push("-I" +project.path+"/hal_bsp/HAL/inc")
+                args.push("-I" +project.path+"/hal_bsp/drivers/inc")
+                args.push("-I" +project.path+"/hal_bsp/")
+                args.push("-I" +project.path+"/inc/")
                  //Defines:   
                     args.push("-D__hal__")
                     args.push("-DALT_NO_INSTRUCTION_EMULATION")
-                    args.push("-DALT_USE_SMALL_DRIVERS")
-                    args.push("-DSMALL_C_LIB")
+                    args.push("-DALT_USE_SMALL_DRIVERS")    //использование уменьшенных драйверов
+                    args.push("-DSMALL_C_LIB")              //использование уменьшенных библиотек
                     args.push("-DALT_SINGLE_THREADED")
+                //для уменьшения размера раскомментить
+//                  args.push("-DALT_NO_C_PLUS_PLUS")       //без поддержки С++
+//                  args.push("-DALT_NO_EXIT")              //без функции exit()
+//                  args.push("-DALT_NO_CLEAN_EXIT")       //без функции exit()
                 //Input and Output files:
                     args.push(input.filePath);
                     args.push('-o');
@@ -228,7 +273,7 @@ Project
                 var args = []
                 //Keys:
                     args.push("-g")
-                    args.push("-msmallc")
+                    args.push("-msmallc")   //использование уменьшенных библиотек
                     args.push("-O0")
                     args.push("-Wl,-Map="+ product.destinationDirectory+"/"+project.name+".map")
                     args.push("-mno-hw-div")
@@ -238,7 +283,7 @@ Project
                     args.push("-lm")
                     args.push("-msys-lib=m")
                 //Linker script:
-                    args.push("-T"+project.path+"/linker.x")
+                    args.push("-T"+project.path+"/hal_bsp/linker.x")
                 //start file.obj:
                     args.push("-msys-crt0="+ product.destinationDirectory+"/crt0.S.o")
                 //System lib (name project):
@@ -249,11 +294,14 @@ Project
                     args.push(input.filePath);
                     args.push('-o');
                     args.push(output.filePath);
-                var compilerPath = "nios2-elf-g++"
+                var compilerPath = "nios2-elf-gcc"
                 var cmd = new Command(compilerPath,args);
                 cmd.description = "linking project: "+ project.name
                 return cmd;
             }
         }
     }  
+    
+  
+    
 }
