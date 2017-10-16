@@ -50,39 +50,40 @@
 
 import qbs 1.0
 
-Product {
-    
-    type: "BSPobj"
-    destinationDirectory: project.buildDirectory
-    name: "Generate BSP LIBRARY"
-    
-    Group {
-        name: "bsp"
-        fileTags: "bsp"
-        files: [
-            "hal_bsp/**/*.bsp",
-        ]
-    }
-    
-    
-    Rule
-            {
-                inputs: ['bsp']
-                Artifact
-                {fileTags: ['BSPobj']}
-                prepare: 
-                {
-                 var args = [];
-                    args.push('--settings')
-                    args.push(input.filePath);
-                    args.push("--bsp-dir "+project.path+"/lib/hal_bsp/");
-                 var compilerPath = "nios2-bsp-generate-files"    
-                var cmd = new Command(compilerPath, args);
-                    cmd.description = 'generating ' + input.fileName;
-                    cmd.highlight = 'generate';
-                    cmd.silent = false;
-                    return cmd;
-                }
-            }
-}
+Project {
+    property bool hasSpecialFeature: true
+    Application {
+        name: 'HelloWorld-Complex'
 
+        Depends { name: 'cpp' }
+        cpp.defines: ['SOMETHING']
+
+
+        files: [
+            "src/foo.h",
+            "src/foo.cpp"
+        ]
+
+        Group {
+            condition: project.hasSpecialFeature
+            prefix: "src/"
+            files: ["specialfeature.cpp", "specialfeature.h"]
+        }
+
+        Group {
+            cpp.defines: {
+                var defines = outer.concat([
+                    'HAVE_MAIN_CPP',
+                    cpp.debugInformation ? '_DEBUG' : '_RELEASE'
+                    ]);
+                if (project.hasSpecialFeature)
+                    defines.push("HAS_SPECIAL_FEATURE");
+                return defines;
+            }
+            prefix: "src/"
+            files: [
+                'main.cpp'
+            ]
+        }
+    }
+}

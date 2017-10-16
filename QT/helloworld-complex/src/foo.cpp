@@ -48,41 +48,12 @@
 **
 ****************************************************************************/
 
-import qbs 1.0
+#ifndef SOMETHING
+#   error missing define SOMETHING
+#endif
 
-Product {
-    
-    type: "BSPobj"
-    destinationDirectory: project.buildDirectory
-    name: "Generate BSP LIBRARY"
-    
-    Group {
-        name: "bsp"
-        fileTags: "bsp"
-        files: [
-            "hal_bsp/**/*.bsp",
-        ]
-    }
-    
-    
-    Rule
-            {
-                inputs: ['bsp']
-                Artifact
-                {fileTags: ['BSPobj']}
-                prepare: 
-                {
-                 var args = [];
-                    args.push('--settings')
-                    args.push(input.filePath);
-                    args.push("--bsp-dir "+project.path+"/lib/hal_bsp/");
-                 var compilerPath = "nios2-bsp-generate-files"    
-                var cmd = new Command(compilerPath, args);
-                    cmd.description = 'generating ' + input.fileName;
-                    cmd.highlight = 'generate';
-                    cmd.silent = false;
-                    return cmd;
-                }
-            }
+int someUsefulFunction()
+{
+    return 156;
 }
 

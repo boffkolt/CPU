@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Oct 11, 2017 3:46:03 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1507722363859</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Oct 13, 2017 5:47:26 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1507902446419</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/engineer/GIT/CPU/QT/NIOSII/lib/hal_bsp/</BspGeneratedLocation>
         <BspSettingsFile>/home/engineer/GIT/CPU/QT/NIOSII/lib/hal_bsp/settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../../../../FPGA/PROJECTS/nios/unsaved.sopcinfo</SopcDesignFile>

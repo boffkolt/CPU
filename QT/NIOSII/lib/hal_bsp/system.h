@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'unsaved'
  * SOPC Builder design path: ../../../../../FPGA/PROJECTS/nios/unsaved.sopcinfo
  *
- * Generated: Wed Oct 11 15:20:13 MSK 2017
+ * Generated: Wed Oct 11 16:10:02 MSK 2017
  */
 
 /*
@@ -144,7 +144,7 @@
  *
  */
 
-#define ALT_DEVICE_FAMILY "Cyclone IV E"
+#define ALT_DEVICE_FAMILY "Cyclone V"
 #define ALT_ENHANCED_INTERRUPT_API_PRESENT
 #define ALT_IRQ_BASE NULL
 #define ALT_LOG_PORT "/dev/null"
@@ -237,14 +237,14 @@
  */
 
 #define ALT_MODULE_CLASS_onchip_memory2_0 altera_avalon_onchip_memory2
-#define ONCHIP_MEMORY2_0_ALLOW_IN_SYSTEM_MEMORY_CONTENT_EDITOR 0
+#define ONCHIP_MEMORY2_0_ALLOW_IN_SYSTEM_MEMORY_CONTENT_EDITOR 1
 #define ONCHIP_MEMORY2_0_ALLOW_MRAM_SIM_CONTENTS_ONLY_FILE 0
 #define ONCHIP_MEMORY2_0_BASE 0x8000
 #define ONCHIP_MEMORY2_0_CONTENTS_INFO ""
 #define ONCHIP_MEMORY2_0_DUAL_PORT 0
 #define ONCHIP_MEMORY2_0_GUI_RAM_BLOCK_TYPE "AUTO"
 #define ONCHIP_MEMORY2_0_INIT_CONTENTS_FILE "unsaved_onchip_memory2_0"
-#define ONCHIP_MEMORY2_0_INIT_MEM_CONTENT 1
+#define ONCHIP_MEMORY2_0_INIT_MEM_CONTENT 0
 #define ONCHIP_MEMORY2_0_INSTANCE_ID "NONE"
 #define ONCHIP_MEMORY2_0_IRQ -1
 #define ONCHIP_MEMORY2_0_IRQ_INTERRUPT_CONTROLLER_ID -1

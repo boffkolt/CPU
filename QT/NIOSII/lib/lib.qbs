@@ -57,31 +57,69 @@ StaticLibrary {
     cpp.warningLevel: "none";
     cpp.positionIndependentCode: false;
     destinationDirectory: project.buildDirectory
-    name: "lib"
+    name: "HAL_BSP"
     targetName: "HAL"
+    Depends { name: 'cpp' }
+    Depends { name: "Generate BSP LIBRARY" }
+    
     files: [
         "hal_bsp/**/*.c",
         "hal_bsp/**/*.S",
         "hal_bsp/**/*.h"
     ]
-//    excludeFiles: [
-//        "hal_bsp/**/crt0.S",
-//    ]
+    excludeFiles: [
+        "hal_bsp/**/crt0.S",
+    ]
     
     
     
-    cpp.includePaths: ["hal_bsp/drivers/inc",
+    cpp.includePaths: 
+    [   "hal_bsp/drivers/inc",
         "hal_bsp/HAL/inc",
         "hal_bsp/HAL/inc/os",
         "hal_bsp/HAL/inc/priv",
         "hal_bsp/HAL/inc/sys",
-    "hal_bsp/"]
-    cpp.defines: 
-        [
-       "__hal__",
-        "ALT_NO_INSTRUCTION_EMULATION","ALT_USE_SMALL_DRIVERS","SMALL_C_LIB","ALT_SINGLE_THREADED"   
+        "hal_bsp/"
+    ]
     
-        ]
+    cpp.defines: {
+        
+        var def = [];
+        def = def.concat( 
+        [
+        "__hal__",
+        "ALT_NO_INSTRUCTION_EMULATION",
+                  
+        "ALT_SINGLE_THREADED"                 
+                         ]);
+        if (project.smallc)
+        {
+        
+         def = def.concat(
+             ["SMALL_C_LIB" ,
+              "ALT_USE_SMALL_DRIVERS",]);
+        }
+        
+        
+          
+        
+        if (project.no_cpp)
+        {
+        
+         def = def.concat(
+             ["ALT_NO_C_PLUS_PLUS" ]);
+        }
+        
+        if (project.no_exit)
+        {
+        
+         def = def.concat(
+             ["ALT_NO_EXIT" ,
+              "ALT_NO_CLEAN_EXIT"]);
+        }
+    
+    return def;
+    }
     cpp.assemblerFlags: 
         [
         
@@ -99,10 +137,9 @@ StaticLibrary {
         "-mno-hw-mulx",
         "-mgpopt=global"
             ]
-    Depends { name: 'cpp' }
-    Depends { name: "BSPobj" }
-    
 
+
+    
     Export {
         
         Depends { name: "cpp" }
@@ -122,12 +159,44 @@ StaticLibrary {
             "-mno-hw-mulx",
             "-mgpopt=global"
                 ]
-        cpp.defines: 
+        cpp.defines: {
+            
+            var def = [];
+            def = def.concat( 
             [
-           "__hal__",
-            "ALT_NO_INSTRUCTION_EMULATION","ALT_USE_SMALL_DRIVERS","SMALL_C_LIB","ALT_SINGLE_THREADED"   
+            "__hal__",
+            "ALT_NO_INSTRUCTION_EMULATION",
+                      
+            "ALT_SINGLE_THREADED"                 
+                             ]);
+            if (project.smallc)
+            {
+            
+             def = def.concat(
+                 ["SMALL_C_LIB" ,
+                  "ALT_USE_SMALL_DRIVERS",]);
+            }
+            
+            
+              
+            
+            if (project.no_cpp)
+            {
+            
+             def = def.concat(
+                 ["ALT_NO_C_PLUS_PLUS" ]);
+            }
+            
+            if (project.no_exit)
+            {
+            
+             def = def.concat(
+                 ["ALT_NO_EXIT" ,
+                  "ALT_NO_CLEAN_EXIT"]);
+            }
         
-            ]
+        return def;
+        }
         cpp.assemblerFlags: 
             [
             
@@ -136,6 +205,76 @@ StaticLibrary {
             "-Wa,-gdwarf2"]
      
     }
+    
+    
+
+    
+    
+  /////crt0.S.o compilling  
+    
+    Group {
+        name: "crt"
+        fileTags: "crto"
+        files: [
+            "hal_bsp/**/crt0.S",
+        ]
+    }
+    
+    Rule
+           {
+               inputs: ['crto']
+               
+               Artifact
+               {
+                   fileTags: ['obj']
+                   filePath: project.buildDirectory + "/" + input.fileName + '.o'
+               }
+               prepare:
+               {
+               var args = [];
+               //Keys:
+                   args.push("-MP")
+                   args.push("-MMD")
+                   args.push("-c")
+                   args.push("-Wall")
+                   args.push("-O0")
+                   args.push("-g")
+                   args.push("-mno-hw-div")
+                   args.push("-mno-hw-mul")
+                   args.push("-mno-hw-mulx")
+                   args.push("-mgpopt=global")
+                   args.push("-pipe")
+                   args.push("-Wa,-gdwarf2")
+               //Include paths:
+                   args.push("-I" +project.path+"/lib/hal_bsp/HAL/inc")
+                   args.push("-I" +project.path+"/lib/hal_bsp/drivers/inc")
+                   args.push("-I" +project.path+"/lib/hal_bsp/")
+               //Defines:    
+                   args.push("-D__hal__")
+                   args.push("-DALT_NO_INSTRUCTION_EMULATION")
+                   args.push("-DALT_USE_SMALL_DRIVERS")    //использование уменьшенных драйверов
+                   args.push("-DSMALL_C_LIB")              //использование уменьшенных библиотек
+                   args.push("-DALT_SINGLE_THREADED")
+  
+                   args.push(input.filePath);
+                   args.push('-o');
+                   args.push(output.filePath);
+               var asPath = "nios2-elf-gcc"
+               var cmd = new Command(asPath, args);
+               cmd.description = 'compiling ' + input.fileName;
+               cmd.highlight = 'compiler';
+               cmd.silent = false;
+               return cmd;
+               }
+           }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 
